@@ -3,7 +3,7 @@ package sn.wpp.dao.interf;
 import java.util.List;
 
 import sn.wpp.beans.Compte;
-import sn.wpp.beans.User;
+//import sn.wpp.beans.User;
 
 public interface ComptInt {
 
