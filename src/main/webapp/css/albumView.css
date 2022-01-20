@@ -1,0 +1,96 @@
+body{
+            font-family: SF Pro Display;
+            background: rgb(235, 235, 235);
+        }
+        .tag > a
+        {
+            text-decoration: none;
+            color: rgb(121, 121, 121);
+            transition: 0.3s;
+            padding: 5px;
+            height: 15px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .tag > a:hover 
+        {
+            color: white;
+            background: rgb(0, 102, 255);
+            border-radius: 3px;
+        }
+        .tags-container
+        {
+            display: flex;
+            flex-direction: row;
+            grid-column-gap: 15px;
+            margin-top: 30px;
+        }
+        .container
+        {
+            display : grid;
+            justify-items: center;
+            background: white;
+            height: 100%;
+            border: solid rgb(218, 218, 218) 1px;
+            border-radius: 7px;
+        }
+        .gallery-container
+        {
+            display: grid;
+            width: 100%;
+            grid-row-gap : 10px;
+            justify-items: center;
+            grid-template-rows: 70px 1fr;
+            padding : 0px;
+        }
+        .images-container
+        {
+            display: grid;
+            width: 100%;
+            justify-items: center;
+            grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+        }
+        .image
+        {
+            height: 350px;
+            width: 200px;
+            display: grid;
+        }
+        .image-info
+        {
+            display: grid;
+            justify-items: center;
+        }
+        .image-body 
+        {
+            height: 300px;
+            width: 200px;
+            background-size: cover;
+            border-radius: 7px;
+            box-shadow: 0px 0px 12px 4px rgb(187 187 187);
+            transition: 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+            cursor: pointer;
+        }
+        .image-body:hover 
+        {
+            transform: scale(1.1);
+            box-shadow: none;
+        }
+        .image-title 
+        {
+            font-weight: bold;
+        }
+        .image-details
+        {
+            color: rgb(121, 121, 121);
+        }
+        
+        .tumble
+        {
+        	height : 300px;
+        	width : 500px;
+        	border-radius : 7px;
+            box-shadow: 0px 0px 12px 4px rgb(187 187 187);
+            transition: 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+            cursor: pointer;
+        }

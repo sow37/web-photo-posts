@@ -5,6 +5,7 @@
         <c:import url="/WEB-INF/includes/header.jsp" />
 
         <div class="gallery-container">
+        
         <div class="gallery-container-top">
         	<div>
         		<h1>Liste des albums</h1>
@@ -19,7 +20,12 @@
 
 
             <c:if test="${ !empty albums }">
-
+				<div class="float-button-right-bottom">
+		        	<a href='<c:url value="/user/album/add"/>'>
+		        		<i class="fa fa-plus"></i>
+		        	</a>
+		        </div>
+        
                 <c:forEach items="${ albums }" var="album">
                     <div class="album" onclick="showModal(this)">
                         <div class="album-overlay" style="display : none">
@@ -43,7 +49,7 @@
                         <span hidden="true" class="album-proprio"><c:out value="${album.proprio.prenom} ${album.proprio.nom}"/></span>
                         <span hidden="true" class="album-date"><c:out value="${album.proprio.createdAt}"/></span>
                         <span hidden="true" class="album-taille"><c:out value="${album.images.size()}"/></span>
-                        <span hidden="true" class="album-link"><a href='<c:url value="/album/view?album=${album.id}"/>'>Voir</a></span>
+                        <span hidden="true" class="album-link"><a href='<c:url value="/user/album/view?album=${album.id}"/>'>Voir</a></span>
                     </div>
                 </c:forEach>
 

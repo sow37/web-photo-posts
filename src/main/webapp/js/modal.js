@@ -105,3 +105,29 @@ document.addEventListener("click",event => {
         modal.classList.remove("modal-show"); 
     }
 })
+
+const showImageModal = (event) => {
+	let source = event.target.parentNode.querySelector(".image-info");
+	let rawURL = event.target.style.backgroundImage;
+    let url = rawURL.slice(5,rawURL.length - 2);
+    const modal = document.querySelector(".modal");   
+    const modalImage = document.querySelector(".modal-image-src");
+    
+    const albumId = source.querySelector(".album-id").innerText;
+    const albumDescription = source.querySelector(".album-description").innerText;
+    const albumTitle = source.querySelector(".album-title").innerText;
+    const albumSize = source.querySelector(".album-taille").innerText;
+    const albumOwner = source.querySelector(".album-proprio").innerText;
+    const albumCreation = source.querySelector(".album-date").innerText;
+    const albumLink = source.querySelector(".album-link").innerHTML;
+    modal.querySelector(".modal-album-id").innerText = albumId;
+    modal.querySelector(".modal-album-titre").innerText = albumTitle;
+    modal.querySelector(".modal-album-description").innerText = albumDescription;
+    modal.querySelector(".modal-album-creation").innerText = albumCreation;
+    modal.querySelector(".modal-album-owner").innerText = albumOwner;
+    modal.querySelector(".modal-album-size").innerText = albumSize;
+    modal.querySelector(".modal-album-link").innerHTML = albumLink;
+    
+    modalImage.setAttribute("src",url);
+    modal.classList.add("modal-show");
+}

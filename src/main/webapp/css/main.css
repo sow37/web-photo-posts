@@ -382,4 +382,10 @@ body
 {
 	transform : translateY(-10px);
 }
-back
+.float-button-right-bottom
+{
+	position : fixed;
+	right : 30px;
+	bottom : 30px;
+	font-size : 20pt;
+}

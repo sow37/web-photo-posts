@@ -9,7 +9,7 @@
         <c:choose>
             <c:when test="${ empty requestScope.users }">
                 <div class="message success" style="text-align : center; font-size : 40px; margin-top : 40px; font-weight : bold;">
-                    <i class="far fa-lightbulb flicker-2" style="color : #ffb100;"></i>
+                    <i class="far fa-lightbulb flicker-2" style="color : #ffb100; font-size : 150pt;"></i>
                     <br/>
                     Aucun utilisateur de ce type pour le moment
                 </div>

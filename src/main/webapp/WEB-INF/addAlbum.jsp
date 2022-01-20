@@ -57,7 +57,7 @@
                             <div>
                                 Drag and Drop here <br>
                                 or
-                                <input type="file" name="" id="" class="upload" value="browse">
+                                <input type="file" name="files" id="" class="upload" value="browse">
                             </div>
 
                         </div>
