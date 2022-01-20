@@ -1,0 +1,151 @@
+.text-box-content
+        {
+            transform: rotate(0deg);
+            transition: 0.1s;
+            cursor: pointer;
+        }
+        .text-box
+        {
+            cursor: pointer;
+        }
+        .text-box:hover > .text-box-content
+        {
+            /* transform: rotate(180deg); */
+        }
+        .text-box:hover {
+            transform: translate(-50%,-50%) rotate(180deg);
+        }
+        a{
+            text-decoration: none;
+            color: rgb(64, 149, 235);
+        }
+        .text-box
+        {
+            width: auto;
+            padding: 20px;
+            max-height: 150px;
+            background: rgb(82, 169, 255);
+            color: white;
+            position: absolute;
+            left: 50%;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            font-size: 35px;
+            transition: 0.3s;
+            text-align: center;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .left
+        {
+            position: relative;
+        }
+        .top-right-text
+        {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            color: rgb(77, 77, 77);
+        }
+        .form-input
+        {
+            margin-top: 20px;
+        }
+        .form-input > span 
+        {
+            font-weight: bold;
+
+        }
+        .form-input > input 
+        {
+            height: 45px;
+            width: 90%;
+            border-radius: 7px;
+            border: solid 3px rgb(219, 219, 219);
+            padding-left: 15px;
+            transition: 0.3s;
+            outline: none;
+        }
+        .form-input > input[type="text"]:focus , input[type="password"]:focus
+        {
+            border: solid 3px rgb(82, 169, 255);
+        }
+        
+        .right-container
+        {
+            padding-top: 50px;
+            padding-left: 70px;
+            position: relative;
+            display: grid;
+        }
+        .left-image
+        {
+            height: 100%;
+            left: 100%;
+            background: black;
+            
+            background-size: cover;
+            transition: 0.3s;
+        }
+        body
+        {
+            background: whitesmoke;
+            font-family: SF Pro Display;
+        }
+        .container
+        {
+            display: grid;
+            justify-items: center;
+            align-items: center;
+        }
+        .login-form
+        {
+            display: grid;
+            background: white;
+            width: 70%;
+            height : 750px;
+            margin-top : 50px;
+            margin-bottom : 50px;
+            grid-template-columns: 0.7fr 1fr;
+            box-shadow: 0px 0px 5px 5px rgb(228, 228, 228);
+            border-radius: 7px;
+            transition: 0.3s;
+            overflow: hidden;
+            margin-top: 30px;
+        }
+        .submit-btn
+        {
+            width: 40%;
+        }
+        .submit-btn > input
+        {
+            border-radius: 20px;
+            border: none;
+            height: 50px;
+            background: rgb(63, 63, 63);
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            box-shadow: 0px 0px 5px 5px rgb(241, 241, 241);
+        }
+        .submit-btn > input:hover 
+        {
+            transform: translateY(-5px);
+        }
+        @media only screen and (max-width: 800px)
+        {
+            .login-form{
+                grid-template-columns: initial;
+                grid-template-rows: 1fr 1fr;
+            }
+            .right-container
+            {
+                padding-left: 40px;
+            }
+            .submit-btn
+            {
+                width: 100%;
+            }
+        }

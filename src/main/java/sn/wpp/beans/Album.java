@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
 
 import sn.wpp.common.CommonAttributs;
 import sn.wpp.common.enumeration.Acces;
@@ -21,6 +21,10 @@ import sn.wpp.common.enumeration.Acces;
 @NamedQuery(name = "getAlbumByStatus", query = "SELECT a FROM Album a WHERE a.acces = :statut")})
 public class Album extends CommonAttributs implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String titre;
 	private String description;
 	private Acces acces;
@@ -88,11 +92,7 @@ public class Album extends CommonAttributs implements Serializable {
 		this.sharedWith = sharedWith;
 	}
 
-	@Override
-	public String toString() {
-		return String.format("Album [titre=%s, description=%s, acces=%s, images=%s, owner=%s, sharedWith=%s]", titre,
-				description, acces, images, owner, sharedWith);
-	}
+	
 	
 	
 

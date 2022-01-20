@@ -9,7 +9,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
+
 
 import sn.wpp.common.CommonAttributs;
 import sn.wpp.common.enumeration.Profil;
@@ -17,7 +17,9 @@ import sn.wpp.common.enumeration.Profil;
 @SuppressWarnings("serial")
 @NamedQueries({@NamedQuery(name = "getUserByEmail", query = "SELECT u FROM User u WHERE u.email = :userEmail"),
 @NamedQuery(name = "getUsersWithStatus", query = "SELECT u FROM User u WHERE u.profil = :userStatus"),
-@NamedQuery(name = "getAll", query = "SELECT u FROM User u")})
+@NamedQuery(name = "getAll", query = "SELECT u FROM User u"),
+@NamedQuery(name = "getUserByLogin", query = "SELECT u FROM User u WHERE u.compte.id = (select c.id from Compte c where c.login LIKE :userLogin )")})
+
 @Entity
 // @Stateful(passivationCapable = false)
 public class User extends CommonAttributs implements Serializable {

@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
-import javax.persistence.Table;
+
 
 import sn.wpp.common.CommonAttributs;
 

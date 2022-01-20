@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:import url="./Includes/header.jsp"/>
+<c:import url="/WEB-INF/includes/header.jsp"/>
 
 <div style="text-align: center; font-size: 40px;">
     Bienvenue a gallery esp!
@@ -18,10 +18,18 @@
     <br>
     <br>
     <a href="/galery">
-        <button>
+        <a href="<c:url value="/user/albums"/>" class="blue-btn">
             Visiter la gallery
-        </button>
+        </a>
     </a>
 </div>
 
-<c:import url="./Includes/footer.jsp"/>
+<script>
+	<c:if test="${ !empty param.connected }">
+	window.addEventListener("DOMContentLoaded",(event) => {
+	    showMessage("<c:out value="${ param.connected }"/>");
+	});
+	</c:if>
+</script>
+
+<c:import url="/WEB-INF/includes/footer.jsp"/>

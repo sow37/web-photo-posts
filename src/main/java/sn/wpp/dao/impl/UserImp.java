@@ -8,7 +8,9 @@ import javax.persistence.Persistence;
 
 import sn.wpp.beans.Compte;
 import sn.wpp.beans.User;
+import sn.wpp.common.enumeration.Profil;
 import sn.wpp.dao.interf.UserInt;
+
 
 
 public class UserImp implements UserInt{
@@ -19,15 +21,15 @@ public class UserImp implements UserInt{
 	}
 	
 	@Override
-	public int add(User user) {
+	public boolean add(User user) {
 		try {
 			em.getTransaction().begin();
 			em.persist(user);
 			em.getTransaction().commit();
-			return 1;
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;
+			return false;
 		}
 	}
 	
@@ -46,11 +48,11 @@ public class UserImp implements UserInt{
 		}
 	}
 	@Override
-	public User getUser(int id) {
+	public User getUser(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return em.find(User.class, id);
 	}
-	@Override
+	
 	public User getUserByEmail(String email) {
 		try {
 			em.getTransaction().begin();
@@ -62,29 +64,50 @@ public class UserImp implements UserInt{
 			return null;
 		}
 	}
-	@Override
-	public int update(User user) {
+		@Override
+	public boolean update(User user) {
 		try {
 			em.getTransaction().begin();
 			em.persist(user);
 			em.getTransaction().commit();
-			return 1;
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;
+			return false;
 		}
 	}
 	@Override
-	public int delete(User user) {
+	public boolean delete(User user) {
 		try {
 			em.getTransaction().begin();
 			em.remove(user);
 			em.getTransaction().commit();
-			return 1;
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;
+			return false;
 		}
+	}
+	
+	public User getUserByLogin(String login) {
+		try {
+			em.getTransaction().begin();
+			User user = (User) em.createNamedQuery("getUserByLogin").setParameter("userLogin", login).getSingleResult();
+			em.getTransaction().commit();
+			return user;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	@SuppressWarnings("unchecked")
+	public List<User> findUsersWithStatus(Profil profil)
+	{
+		List<User> users = null;
+		users = (List<User>) this.em.createNamedQuery("getUsersWithStatus").setParameter("userStatus", profil)
+				.getResultList();
+		
+		return users;
 	}
 
 }

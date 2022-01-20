@@ -7,8 +7,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import sn.wpp.beans.Compte;
-import sn.wpp.beans.User;
+
 import sn.wpp.dao.interf.ComptInt;
+
+
 
 public class CompteImp implements ComptInt {
 

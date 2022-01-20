@@ -7,6 +7,7 @@ import sn.wpp.common.enumeration.Profil;
 import sn.wpp.dao.impl.UserImp;
 import sn.wpp.dao.interf.UserInt;
 
+
 public class TestUser {
 
 	public static void main(String[] args) {

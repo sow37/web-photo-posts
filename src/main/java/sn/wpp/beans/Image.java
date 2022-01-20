@@ -1,14 +1,14 @@
 package sn.wpp.beans;
 
 import java.io.Serializable;
-import java.util.Date;
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
 
 import sn.wpp.common.CommonAttributs;
 
@@ -104,4 +104,7 @@ public class Image extends CommonAttributs implements Serializable {
 		this.fichierImage = fichierImage;
 	}
 
+	
+
+	
 }
