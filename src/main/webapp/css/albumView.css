@@ -94,3 +94,7 @@ body{
             transition: 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
             cursor: pointer;
         }
+        .modal-album-id
+        {
+        display : none;
+        }

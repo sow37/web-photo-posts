@@ -4,14 +4,14 @@
             width: 250px;
             background: grey;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);;
             position: relative;
             display: grid;
             justify-items: center;
         }
         .album:hover 
         {
-        	transform : translateY(-10px);
+        	transform : scale(1.1);
         }
         .album-overlay
         {

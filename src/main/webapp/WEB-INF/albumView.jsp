@@ -47,7 +47,7 @@
     
                         </div>
                         <div class="image-info">
-                            <div class="image-title">Some random shit</div>
+                            <div class="image-title"><c:out value="${image.titre.split(' ')[3]}" /></div>
                             <div class="image-details">some cool bullshit</div>
                             <span hidden="true" class="album-id"><c:out value="${album.id}"/></span>
                         <span hidden="true" class="album-title"><c:out value="${album.titre}"/></span>
@@ -66,7 +66,5 @@
 </c:if>
 
 
-
-<script src='<c:url value="/css/modal.js"/>'></script>
-<script src='<c:url value="/css/albumView.js"/>'></script>
+<script src='<c:url value="/js/albumView.js"/>'></script>
 <c:import url="/WEB-INF/includes/footer.jsp" />
