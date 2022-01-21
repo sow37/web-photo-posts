@@ -52,15 +52,18 @@
     }
     .card:hover 
     {
-        transform: scale(0.95);
+        transform: scale(1.02);
     }
     .bottom 
     {
         display : grid;
         grid-template-columns: 1fr 1fr 1fr;
-        width: 80%;
+        width: 100%;
         justify-items: center;
         padding-bottom: 50px;
+        grid-column-gap: 15px;
+        padding-right: 20px;
+        padding-left: 20px;
     }
     .top
     {
@@ -169,6 +172,7 @@
         color: rgb(199, 199, 199);
         top: 62%;
         left: 50%;
+        text-align: center;
         transform: translate(-50%,-50%);
     }
     .particle-body 
@@ -177,4 +181,35 @@
         position: relative;
         height: 500px;
         background: rgb(37, 37, 37);
+    }
+    @media only screen and (max-width: 1200px)
+    {
+        .card
+        {
+            width: 290px;
+        }
+    }
+    @media only screen and (max-width: 1000px) {
+        .header-text 
+        {
+            font-size: 60px;
+        }
+        .showcase
+        {
+            justify-items: center;
+            grid-template-columns: 1fr;
+            text-align: center;
+            grid-row-gap: 15px;
+        }
+        .card-image 
+        {
+            width: 300px;
+            height: 300px;
+        }
+        .bottom 
+        {
+            grid-template-columns: 1fr;
+            grid-row-gap: 25px;
+            width: auto;
+        }
     }
