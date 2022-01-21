@@ -24,7 +24,7 @@
 		        
 <c:if test="${ !empty album.images }">
     <div class="container">
-    
+    <div style="margin-top : 50px; font-size : 30pt; font-weight : bold;">Images de lalbum</div>
         <div class="gallery-container">
             <div class="tags-container">
                 <div class="tag">

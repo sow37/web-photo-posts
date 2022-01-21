@@ -69,7 +69,7 @@
 
 
 const showModal = (source)=>{
-
+	
     let rawURL = source.querySelector(".album-content").style.backgroundImage;
     let url = rawURL.slice(5,rawURL.length - 2);
     const modal = document.querySelector(".modal");
@@ -130,4 +130,10 @@ const showImageModal = (event) => {
     
     modalImage.setAttribute("src",url);
     modal.classList.add("modal-show");
+}
+
+
+const cancelModal = (event) => {
+	console.log("cancel modal!");
+	event.stopPropagation();
 }

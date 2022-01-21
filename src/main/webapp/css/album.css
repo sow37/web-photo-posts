@@ -9,8 +9,16 @@
 		    display: grid;
 		    justify-items: center;
 		    border-radius: 7px;
-		    box-shadow: 0px 0px 5px 5px #d1d1d1;
+		    grid-template-rows : auto 50px;
         }
+        .album-menu
+        {
+        	margin-top : 10px;
+        	width : 90%;
+        	display : grid;
+        	grid-template-columns : 1fr 1fr 1fr 1fr;
+        }
+
         .album:hover 
         {
         	transform : scale(0.95);
@@ -92,9 +100,10 @@
         .gallery-container
         {
         	display : grid;
-        	grid-template-rows 150px 1fr;
+        	grid-template-rows : 150px 1fr;
         	margin-top : 50px;
         	padding : 50px;
         	justify-items : center;
         	grid-row-gap : 20px;
+        	min-height : 500px;
         }

@@ -43,6 +43,11 @@
                         </div>
                         <div class="album-content" style="background-image: url('<c:url value='/uploads/${album.images[0].fichierImage}'/>');">
                         </div>
+                        <div class="album-menu" onClick="cancelModal(event);">
+                        	<div>
+                        		<i class="fa fa-heart"></i>
+                        	</div>
+                        </div>
                         <span hidden="true" class="album-id"><c:out value="${album.id}"/></span>
                         <span hidden="true" class="album-title"><c:out value="${album.titre}"/></span>
                         <span hidden="true" class="album-description"><c:out value="${album.description}"/></span>
