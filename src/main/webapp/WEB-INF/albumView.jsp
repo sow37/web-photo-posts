@@ -12,7 +12,7 @@
               		</div>
               
                     <br/>
-                    Cet Album ne contient pas d'images
+                    Cet Album ne contient pas d'images :(
 </div>
 </c:if>
 
