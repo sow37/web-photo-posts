@@ -10,7 +10,10 @@ nav > .left
 nav > .right
 {
     justify-content: right;
-    padding-right: 70px;
+}
+.nav-link:last-of-type,.nav-link-dropdown:last-of-type 
+{
+	margin-right : 50px;
 }
 body{
     margin: 0;
@@ -388,4 +391,9 @@ body
 	right : 30px;
 	bottom : 30px;
 	font-size : 20pt;
+	transition : 0.1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+.float-button-right-bottom:hover 
+{
+	transform : scale(1.5);
 }
