@@ -34,7 +34,7 @@ Pour executer le projet, il faut tout d'abord:
   <img src="https://github.com/sow37.png?size=50">
 </a>
 <a href="https://github.com/DembaDiack">
-  <img src="https://avatars.githubusercontent.com/u/37861646?v=4">
+  <img src="https://github.com/DembaDiack.png?size=50">
 </a>
 <a href="https://github.com/ousmane12">
   <img src="https://github.com/ousmane12.png?size=50">
