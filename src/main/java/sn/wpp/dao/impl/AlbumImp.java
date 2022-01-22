@@ -1,6 +1,7 @@
 package sn.wpp.dao.impl;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -24,9 +25,14 @@ public class AlbumImp implements AlbumInt {
 	}
 	@Override
 	public void add(Album album) {
-		em.getTransaction().begin();
-		em.persist(album);
-		em.getTransaction().commit();
+		try {
+			em.getTransaction().begin();
+			em.persist(album);
+			em.getTransaction().commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	@Override
 	public List<Album> getAll() {
@@ -72,10 +78,10 @@ public class AlbumImp implements AlbumInt {
 	public List<Album> findAlbumByStatus(Acces status)
 	{
 		List<Album> albums = null;
-		System.out.println("from server");
-		albums = this.em.createNamedQuery("getAlbumByStatus").setParameter("statut", status).getResultList();
+		System.out.println("from server "+ status);
+		albums = em.createNamedQuery("getAlbumByStatus").setParameter("statut", status).getResultList();
 		if(albums == null) {
-			System.out.println("null");
+			System.out.println("Aucun album null");
 		}else {
 			System.out.println("size:"+albums.size());
 		}
@@ -116,5 +122,31 @@ public class AlbumImp implements AlbumInt {
 			}
 		}
 	}
+	public List<Album> getAccessibleAlbums(User user)
+	{
+		if(user == null) {
+			List<Album> albums = findAlbumByStatus(Acces.publique);
+			return albums;
+		}
+		List<Album> albums = findAlbumByStatus(Acces.privee);
+		System.out.println("Depuis Imp "+albums.size());
+		List<Album> accessibleAlbums = new ArrayList<Album>();
+		for (Album album : albums)
+		{
+			for (User u : album.getSharedWith())
+			{
+				System.out.println("Depuis Imp Shared " +album.getSharedWith());
+				System.out.println("Le user qui a partager : "+u.getNom() +" ID: "+u.getId());
+				System.out.println("Le users qui doit avoir access : "+user.getNom() +" ID : "+user.getId());
+				if (u.getEmail().equals(user.getEmail()))
+				{
+					accessibleAlbums.add(album);
+				}
+			}
+		}
+		System.out.println("Depuis Imp access "+accessibleAlbums);
+		return accessibleAlbums;
+	}
+	
 	
 }

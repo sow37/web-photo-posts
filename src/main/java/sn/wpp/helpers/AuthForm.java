@@ -1,10 +1,7 @@
 package sn.wpp.helpers;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import sn.wpp.beans.Compte;
 import sn.wpp.beans.User;
-import sn.wpp.dao.impl.CompteImp;
 import sn.wpp.dao.impl.UserImp;
 
 
@@ -15,10 +12,8 @@ public class AuthForm {
 	private static final String CHAMP_PASSWORD = "password";
 	private HttpServletRequest request;
 	private User utilisateur;
-	private Compte account;
 	private String login;
 	private String password;
-	//private UserImp auth ;
 	public AuthForm(HttpServletRequest request) {
 		this.request = request;
 	}
@@ -28,10 +23,7 @@ public class AuthForm {
 		UserImp auth = new UserImp();
 		login = getParameter(CHAMP_LOGIN);
 		password = getParameter(CHAMP_PASSWORD);
-		
-		
 		utilisateur = auth.getUserByLogin(login);
-		
 		if(utilisateur != null && !utilisateur.getCompte().getPassword().equals(password)) {
 				utilisateur = null;
 		}
@@ -42,9 +34,6 @@ public class AuthForm {
 			return true;
 		}
 		return false;
-		
-		
-		
 	}
 	private String getParameter(String parameter) {
 		String valeur = request.getParameter(parameter);
@@ -57,5 +46,4 @@ public class AuthForm {
 	public String getLogin() {
 		return login;
 	}
-
 }

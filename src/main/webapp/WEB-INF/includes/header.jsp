@@ -86,22 +86,27 @@
                     
                 </div>
                 <div class="logo" onClick="showMessage('Bienvenue')">
-                    <a href='<c:url value="/"/>'>PHOTOAPP</a>
+                    <a href='<c:url value="/"/>'>PHOTOGRAM</a>
                 </div>
             </div>    
             <div class="right">
+            <c:if test="${empty sessionScope.utilisateur }">
             	<div class="nav-link mobile">
-                    <a href='<c:url value="/user/albums"/>'>Gallerie</a>
-                </div>
-                <c:if test="${!empty sessionScope.utilisateur }">
-                <div class="nav-link mobile">
-                    <a href='<c:url value="/user/albums"/>'>Ma gallerie</a>
+                    <a href='<c:url value="/gallery"/>'>Gallerie</a>
                 </div>
                 </c:if>
-                
-                
-                <c:if test="${ !empty utilisateur.nom}">
-             		
+                <c:if test="${!empty sessionScope.utilisateur }">
+                 <div class="nav-link mobile">
+                	<a href='<c:url value="/user/gallery"/>'>Gallerie</a>
+                </div>
+                <div class="nav-link mobile">
+                    <a href='<c:url value="/user/albums"/>'>Ma gallerie</a>
+                    
+                </div>
+               
+                </c:if>
+                <c:if test="${ sessionScope.utilisateur.profil == 'admin'}">
+             	
              		<div class="nav-link-dropdown mobile">
                     <div class="dropdown">
                         <button class="dropbtn">
@@ -112,9 +117,11 @@
                           <a href='<c:url value="/user/list-admin"/>'>Utilisateurs Admin</a>
                         </div>
                       </div>
+                      <div class="nav-link mobile">
+                    
+                </div>
                 </div>
              	</c:if>
-                
                 <c:if test="${!empty sessionScope.utilisateur }">
                 <div class="nav-link-dropdown mobile">
                     <div class="dropdown">
@@ -129,22 +136,10 @@
                       </div>
                 </div>
                 </c:if>
-                
-                
-             	
-             	
-             	
-             	
-             	
-             	
-             	
              	<c:if test="${empty sessionScope.utilisateur }">
 	             	<div class="nav-link mobile">
 	                    <a href='<c:url value="/login"/>'>Se connecter</a>
 	                </div>
              	</c:if>
-                
-                
             </div>
-            
         </nav>

@@ -13,18 +13,21 @@
                 </div>
                 <hr>
             </div>
+            <p class="error">${ form.vide }</p>
             <div class="body">
                 <div>
                     <span class="input-title">Title</span>
                     <br>
                     <input type="text" class="form-control body-input" id="titre" name="titre" value="<c:out value=" ${ form.titre
                         }" />" placeholder="Titre de l'album...">
+                        <span class="error">${ form.result.titre }</span>
                 </div>
                 <div>
                     <span class="input-title">Description</span>
                     <br>
                     <textarea class="form-control body-input" id="description" placeholder="Description de l'album..."
                         name="description"><c:out value="${ form.description }"/></textarea>
+                        <span class="error">${ form.result.description }</span>
                 </div>
                 <div>
                     <span>Statut</span>
@@ -37,16 +40,15 @@
                     </select>
                 </div>
                 <div id="usersAuth" class="usersAuth" style="display: none;">
+                	<label for="users">Utilisateurs authorisés à accéder à cet album</label>
                     <span></span>
                     <br>
                     <select id="users" name="users" multiple class="form-control">
                         <c:if test="${ users != null }">
-                            <c:forEach items="${ users }" var="user">
-                                <option value="<c:out value=" ${ user.id }" />">
-                                <c:out value="${ user.prenom } ${ user.nom } (${ user.compte.login })" />
-                                </option>
-                            </c:forEach>
-                        </c:if>
+	        						<c:forEach items="${ users }" var="user">
+			                    		<option value="<c:out value="${ user.id }" />"><c:out value="${ user.prenom } ${ user.nom }"  /> </option>
+	        						</c:forEach>
+						</c:if>
                     </select>
                 </div>
                 <div>
@@ -57,7 +59,7 @@
                             <div>
                                 Drag and Drop here <br>
                                 or
-                                <input type="file" name="files" id="" class="upload" value="browse">
+                                <input type="file" name="files" class="upload" value="browse">
                             </div>
 
                         </div>
@@ -67,7 +69,7 @@
                     </span>
                 </div>
                 <div>
-                    <input type="submit" value='<c:out value="${ requestScope.update == ' update' ? 'Editer' : 'Ajouter'
+                    <input type="submit" value='<c:out value="${ requestScope.update == 'update' ? 'Editer' : 'Ajouter'
                         }" />'>
                 </div>
                 <c:if test="${ requestScope.update == 'update' }">
@@ -77,8 +79,5 @@
             </div>
             </form>
         </div>
-
-
-
         <script src='<c:url value="/js/addAlbum.js"/>'></script>
         <c:import url="/WEB-INF/includes/footer.jsp" />

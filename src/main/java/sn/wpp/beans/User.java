@@ -80,7 +80,7 @@ public class User extends CommonAttributs implements Serializable {
 		this.email = email;
 	}
 
-	public Profil getStatut() {
+	public Profil getProfil() {
 		return this.profil;
 	}
 

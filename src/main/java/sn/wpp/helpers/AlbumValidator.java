@@ -9,7 +9,7 @@ public class AlbumValidator
 	private String TITRE;
 	private String DESCRIPTION;
 	private HttpServletRequest request;
-	private HashMap<String, String> result = new HashMap<String, String>();
+	public HashMap<String, String> result = new HashMap<String, String>();
 	private final String STR_PATTERN = "[A-Za-zéèöôîï]{2,}";
 	
 	public AlbumValidator(HttpServletRequest request)
@@ -28,11 +28,11 @@ public class AlbumValidator
 		}
 		if (!this.isValidTitle())
 		{
-			this.result.put("titre", "Le titre doit comporter au minimum deux (2) caractÃ¨res.");
+			this.result.put("titre", "Le titre doit comporter au minimum deux (2) caractéres.");
 		}
 		if (!this.isValidDescription())
 		{
-			this.result.put("description", "La description doit comporter au minimum deux (2) caractÃ¨res.");
+			this.result.put("description", "La description doit comporter au minimum deux (2) caractéres.");
 		}
 		return this.result;
 	}

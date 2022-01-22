@@ -6,78 +6,69 @@
 <link rel="stylesheet" href='<c:url value="/css/Home.css"/>'>
 <div class="particle-body" id="particles-js">
     <div class="header-text">
-        PHOTOESP
+        PHOTOGRAM
     </div>
     <div class="sub-text">
-        Some really cool catchphrase
+        Parceque vos souvenirs sont immortels !
     </div>
 
-    <a href="#" class="main-link">
+    <a href="<c:url value="/register" />" class="main-link">
         Creer Votre Compte!
     </a>
 </div>
-<div class="showcase" style="padding-bottom: 30px;">
+<div class="showcase" style="padding-bottom: 50px;">
     <div>
-        <div class="card-image">
+    <br>
+        <div class="card-image" style="widh: 400px; height: 400px;">
 
         </div>
     </div>
     <div class="right">
         <div class="right-big-text">
-            Quel est donne
+            Partagez 
         </div>
         <div class="grey-text">
-            this is where you write some random cool shit to waste time and shit
-            <br>
-            use line breaks so it looks like even cooler shit then maybe a 
-            <a href="#">random link <i class="fas fa-angle-right"></i></a>
+            vos plus beaux souvenirs avec vos amis et proches
+            <a href="<c:url value="/register" />">ici <i class="fas fa-angle-right"></i></a>
         </div>
-        <div class="right-big-text" style="font-size: 40pt;">
-            Some even cooler bullshit
-        </div>
-        <div class="grey-text">
-            this is super great stuff and we like it 
-        </div>
+        
     </div>
 </div>
 <div class="showcase-vertical">
     <div class="top">
-        <div style="font-size: 15pt; color: rgb(0, 132, 255);">
-            this is some small cool shit
+        <div style="font-size: 50pt; color: red;">
+            <i class="fas fa-heart"></i>
         </div>
         <div class="right-big-text">
-            This is Centered Shit
-        </div>
-        <div class="grey-text" style="margin-top: 15px;">
-            this is super great stuff and we like it 
+            Nous gardons vos photos
         </div>
         <div class="right-big-text" style="font-size: 13pt; margin-top: 30px;">
-            Templates are for noobs
+        Vous pouvez 
         </div>
     </div>
     <div class="bottom">
-        <div class="card">
+        <div class="card" style="widh: 20px; height: 110px;">
             <div class="card-icon">
                 <img src='<c:url value="/assests/book.png"/>' alt="" class="card-icon">
             </div>
             <div class="card-text">
-                Some random text shit
+                Partager
             </div>
         </div>
-        <div class="card">
+        <div class="card" style="widh: 20px; height: 110px;">
             <div class="card-icon">
                 <img src='<c:url value="/assests/picture.png"/>' alt="" class="card-icon">
             </div>
             <div class="card-text">
-                Some cool text shit
+                Editer
             </div>
         </div>
-        <div class="card">
+        <div class="card" style="widh: 20px; height: 110px;">
             <div class="card-icon">
                 <img src='<c:url value="/assests/browsing.png"/>' alt="" class="card-icon">
             </div>
             <div class="card-text">
-                Some cool text shit
+                Supprimer
             </div>
         </div>
     </div>
@@ -117,5 +108,11 @@ window.addEventListener("scroll",(event) => {
     
 })
 </script>
-
+<script>
+	<c:if test="${ !empty sessionScope.utilisateur }">
+	window.addEventListener("DOMContentLoaded",(event) => {
+	    showMessage("<c:out value="Hello, welcome back ${ utilisateur.nom }"/>");
+	});
+	</c:if>
+</script>
 <c:import url="/WEB-INF/includes/footer.jsp"/>

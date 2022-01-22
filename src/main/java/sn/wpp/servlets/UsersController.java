@@ -27,7 +27,6 @@ public class UsersController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static final String GALLERY_PAGE = "/WEB-INF/Gallery.jsp";
-	private static final String ADD_ALBUM_PAGE = "/WEB-INF/addAlbum.jsp";;
 	private static final String USER_LIST_PAGE = "/WEB-INF/UserList.jsp";
 	private static final String USER_ADD_PAGE = "/WEB-INF/signup.jsp";
 	private static final String USER_PROFILE_PAGE = "/WEB-INF/editAccount.jsp";
@@ -41,22 +40,18 @@ public class UsersController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//User user;
 		HashMap<String, String> form = new HashMap<String, String>();
-		//this.cookieManager = new CookieManager(request, response);
-		
 		Long userId;
 		User user;
 		switch (request.getServletPath())
 		{
-			
 			case "/user/add":
 				getServletContext().getRequestDispatcher(USER_ADD_PAGE).forward(request, response);
 				break;
 			case "/user/upgrade":
 				userId = Long.parseLong(request.getParameter("user"));
 				user = userlist.getUser(userId);
-				if(user.getStatut().equals("simpleUser"))
+				if(user.getProfil().equals("simpleUser"))
 				{
 					user.setStatut(Profil.admin);
 					userlist.update(user);
@@ -82,14 +77,13 @@ public class UsersController extends HttpServlet {
 					form.put("nom", user.getNom());
 					form.put("prenom", user.getPrenom());
 					form.put("email", user.getEmail());
-					form.put("statut", user.getStatut().toString());
+					form.put("statut", user.getProfil().toString());
 					form.put("login", user.getCompte().getLogin());
 					form.put("mdp", user.getCompte().getPassword());
 					form.put("cmdp", user.getCompte().getPassword());
 					request.setAttribute("form", form);
 				}
 				request.getServletContext().getRequestDispatcher(USER_ADD_PAGE).forward(request, response);
-				//getServletContext().getRequestDispatcher(USER_PROFILE_PAGE).forward(request, response);
 				break;
 			case "/user/delete":
 				if (request.getParameter("user") == null || request.getParameter("user").isEmpty())
@@ -104,20 +98,15 @@ public class UsersController extends HttpServlet {
 					if(deleteUser != null) {
 						userlist.delete(deleteUser);
 						getServletContext().getRequestDispatcher(USER_LIST_URL).forward(request, response);
-						//response.sendRedirect(request.getContextPath() + USER_LIST_PAGE);
 					}
 					
 				}
 				break;
 			case "/user/list":
-				//recup liste
-				
 				request.setAttribute("users", userlist.findUsersWithStatus(Profil.simpleUser));
 				getServletContext().getRequestDispatcher(USER_LIST_PAGE).forward(request, response);
 				break;
 			case "/user/list-admin":
-				//recup liste
-				
 				request.setAttribute("users", userlist.findUsersWithStatus(Profil.admin));
 				getServletContext().getRequestDispatcher(USER_LIST_PAGE).forward(request, response);
 				break;
@@ -129,14 +118,10 @@ public class UsersController extends HttpServlet {
 				getServletContext().getRequestDispatcher(USER_PARAMETER_PAGE).forward(request, response);
 				break;
 			case "/user/gallery":
-				// recupérer la liste des albums publics (et privees dont il a accés) et la
-				// transmettre à la vue !
 				List<Album> albums = null;
 				request.setAttribute("albums", albums);
 				request.getServletContext().getRequestDispatcher(GALLERY_PAGE).forward(request, response);
 				break;
-			
-			
 			
 			default:
 				getServletContext().getRequestDispatcher("/").forward(request, response);
@@ -148,13 +133,11 @@ public class UsersController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//HashMap<String, String> result;
 		User user;
 		String nom;
 		String prenom;
 		String email;
 		String login;
-		String statut;
 		String password;
 		//Long userId;
 		String passwordbis;
@@ -166,17 +149,14 @@ public class UsersController extends HttpServlet {
 			prenom = request.getParameter("prenom");
 			email = request.getParameter("email");
 			login = request.getParameter("login");
-			//statut = request.getParameter("statut");
 			password = request.getParameter("password");
 			passwordbis = request.getParameter("passwordbis");
 			Long userId = Long.parseLong(request.getParameter("userId"));
 			user = userlist.getUser(userId);
 			if(user != null) {
-				//Profil status = "Administrateur".equals(statut) ? Profil.admin : Profil.simpleUser;
 				user.setNom(nom);
 				user.setPrenom(prenom);
 				user.setEmail(email);
-				//user.setStatut(status);
 				user.getCompte().setLogin(login);
 				user.getCompte().setPassword(password);
 				ConfirmUser confirm = new ConfirmUser(request);
@@ -184,13 +164,10 @@ public class UsersController extends HttpServlet {
 				if (confirm.update())
 				{
 					userlist.update(user);
-					
-					//this.cookieManager.createCookie("userUpdate", "Edition de l'utilisateur '" + login + "' : OK!", 5);
-					USER_LIST_URL = "Administrateur".equals(user.getStatut()) ? "/user/list-admin" : "/user/list";
+					USER_LIST_URL = "Administrateur".equals(user.getProfil()) ? "/user/list-admin" : "/user/list";
 					response.sendRedirect(request.getContextPath() + USER_LIST_URL);
 				}
 			}
-			
 			
 			else
 			{
@@ -199,10 +176,9 @@ public class UsersController extends HttpServlet {
 				form.put("prenom", prenom);
 				form.put("email", email);
 				form.put("login", login);
-				form.put("statut", user.getStatut().toString());
+				form.put("statut", user.getProfil().toString());
 				form.put("password", password);
 				form.put("passwordbis", passwordbis);
-				
 				request.setAttribute("form", form);
 				request.getServletContext().getRequestDispatcher(USER_ADD_PAGE).forward(request, response);
 			}

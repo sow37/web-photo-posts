@@ -11,6 +11,6 @@
   </welcome-file-list>
     <context-param>
   	<param-name>uploadDirectory</param-name>
-  	<param-value>\uploads</param-value>
+  	<param-value>E:/uploads</param-value>
   </context-param>
 </web-app>

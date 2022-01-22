@@ -9,7 +9,7 @@
         <c:choose>
             <c:when test="${ empty requestScope.users }">
                 <div class="message success" style="text-align : center; font-size : 40px; margin-top : 40px; font-weight : bold;">
-                    <i class="far fa-lightbulb flicker-2" style="color : #ffb100; font-size : 150pt;"></i>
+                    <i class="far fa-lightbulb flicker-2" style="color : #ffb100;"></i>
                     <br/>
                     Aucun utilisateur de ce type pour le moment
                 </div>
@@ -29,7 +29,7 @@
                             <div><c:out value="${ user.prenom }" /></div>
                             <div><c:out value="${ user.compte.login }" /></div>
                             <div><c:out value="${ user.email }" /></div>
-                            <div><c:out value="${ user.statut == 'admin' ? 'Administrateur' : 'Utilisateur' }" /></div>
+                            <div><c:out value="${ user.profil == 'admin' ? 'Administrateur' : 'Utilisateur' }" /></div>
                             <div class="dropdown-icon">
                                 <i class="fa fa-caret-down"></i>
                             </div>
@@ -41,7 +41,7 @@
                                     <a class="grey-btn" href="<c:url value="/user/edit?user=${ user.id }" />">Editer</a>
                                 </div>
                                 <div>
-                                    <a class="grey-btn" href="<c:url value="/user/edit?user=${ user.id }" />">Rendre Admin/Simple</a>
+                                    <a class="grey-btn" href="<c:url value="/user/upgrade?user=${ user.id }" />">Rendre ${ user.profil == 'admin' ? 'Utilisateur'  : 'Administrateur' }</a>
                                 </div>
                             </div>
                         </div>
@@ -56,6 +56,6 @@
 
             </c:otherwise>
         </c:choose>
-		
+		<br>
 		<script src='<c:url value="/js/userList.js"/>'></script>
         <c:import url="./includes/footer.jsp" />

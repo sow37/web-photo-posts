@@ -9,7 +9,7 @@
         <div class="left">
             <div class="text-box">
                 <div class="text-box-content">
-                    Hello world
+                    Un monde de souvenir
                 </div>
             </div>
             <div class="left-image" style="background-image : url('<c:url value="/assests/866-1920x1080-blur_2.jpg"/>')">
@@ -20,45 +20,56 @@
             <form class="right-container" action="<c:url value='${ empty param.user? "/register": "/user/edit" }' />" method="post">
                 <div class="top-right-text">
                     <div>
-                        Already have an account ? <a href="<c:url value="/login"/>">Sign in</a>
+                        Vous avez un compte ? <a href="<c:url value="/login"/>">Connectez-vous</a>
                     </div>
                 </div>
-                <div style="font-size: 40px; font-weight: bold;">
-                    Welcome to PhotoApp !
+                <div style="font-size: 30px; font-weight: bold;">
+                    Bienvenue sur PhotoGram !
                 </div>
                 <div style="color: rgb(83, 83, 83); padding-left: 10px;">
-                    Creer votre compte
+                    Creez votre compte
                 </div>
+                <br>
+                <c:if test="${ !empty form.statusMessage }">
+                <span class="titre" style="color: red; text-align: center;">${ form.statusMessage }</span>
+           
+            </c:if>
                 <div class="form-input">
                     <span>Nom</span>
                     <br>
-                    <input type="hidden" class="form-control" name="userId" value="<c:out value="${ form.userId }"/>">
-                    <input type="text" class="form-control" id="nom" name="nom" value="<c:out value="${ form.nom }"/>" placeholder="Votre nom...">
+                    <input type="hidden" class="form-control" name="userId"/>
+                    <input type="text" class="form-control" id="nom" name="nom" value='<c:out value="${ form.utilisateur.nom }"/>' placeholder="Votre nom...">
+                	<span style="color: red; font-weight: 2px;"><c:out value="${ form.erreurs.nom }"/></span>
                 </div>
                 <div class="form-input">
                     <span>Prenom</span>
                     <br>
-                    <input type="text" class="form-control" id="prenom" name="prenom" value="<c:out value="${ form.prenom }"/>" placeholder="Votre prenom...">
+                    <input type="text" class="form-control" id="prenom" name="prenom" value="<c:out value="${ form.utilisateur.prenom }"/>" placeholder="Votre prenom...">
+                    <span style="color: red; font-weight: 2px;"><c:out value="${ form.erreurs.prenom }"/></span>
                 </div>
                 <div class="form-input">
                     <span>Email</span>
                     <br>
-                    <input type="email" class="form-control" name="email" value="<c:out value="${ form.email }"/>" id="email" placeholder="Votre adresse email...">
+                    <input type="email" class="form-control" name="email" value="<c:out value="${ form.utilisateur.email }"/>" id="email" placeholder="Votre adresse email...">
+                    <span style="color: red; font-weight: 2px;"><c:out value="${ form.erreurs.email }"/></span>
                 </div>
                 <div class="form-input">
                     <span>Login</span>
                     <br>
-                    <input type="text" class="form-control" value="<c:out value="${ form.login }"/>" id="login" name="login" placeholder="Votre login ou nom d'utilisateur...">
+                    <input type="text" class="form-control" value="<c:out value="${ form.utilisateur.compte.login }"/>" id="login" name="login" placeholder="Votre login ou nom d'utilisateur...">
+                    <span style="color: red; font-weight: 2px;"><c:out value="${ form.erreurs.login }"/></span>
                 </div>
                 <div class="form-input">
-                    <span>Password</span>
+                    <span>Mot de passe</span>
                     <br>
-                    <input type="password" class="form-control" id="password" value="<c:out value="${ form.password }"/>" name="password" placeholder="Votre mot de passe...">
+                    <input type="password" class="form-control" id="password" value="<c:out value="${ form.utilisateur.compte.password }"/>" name="password" placeholder="Votre mot de passe...">
+                    <span style="color: red; font-weight: 2px;"><c:out value="${ form.erreurs.password }"/></span>
                 </div>
                 <div class="form-input">
-                    <span>Confirmer Password</span>
+                    <span>Confirmer Mot de passe</span>
                     <br>
-                    <input type="password" class="form-control" value="<c:out value="${ form.passwordbis }"/>" id="passwordbis" name="passwordbis" placeholder="confirmer votre mot de passe...">
+                    <input type="password" class="form-control" id="passwordbis" name="passwordbis" placeholder="confirmer votre mot de passe...">
+                    <span style="color: red; font-weight: 2px;">${ form.erreurs.password }</span>
                 </div>
                 <div class="form-input submit-btn">
                     <input type="submit" value="Sinscrire">
@@ -67,7 +78,13 @@
         </div>
     </div>
 </div>
-
+<script>
+	<c:if test="${ !empty form.statusMessage }">
+	window.addEventListener("DOMContentLoaded",(event) => {
+	    showMessage("<c:out value="${ form.statusMessage }"/>");
+	});
+	</c:if>
+</script>
 
 
 

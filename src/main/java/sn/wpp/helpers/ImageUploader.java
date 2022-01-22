@@ -77,26 +77,27 @@ public class ImageUploader
 	public List<Image> saveImages()
 	{
 		List<Image> images = new ArrayList<Image>();
+		System.out.println("Hereee");
 		Collection<Part> parts = null;
 		try
 		{	
-			parts = this.request.getParts();
+			parts = request.getParts();
 		} catch (IllegalStateException e)
 		{
-			this.errors.put("taille", "Les donnees envoyees sont trop volumineuses.");
+			errors.put("taille", "Les donnees envoyees sont trop volumineuses.");
 			e.printStackTrace();
 		} catch (IOException e)
 		{
-			this.errors.put("serveur", "Erreur de configuration du serveur.");
+			errors.put("serveur", "Erreur de configuration du serveur.");
 			e.printStackTrace();
 		} catch (ServletException e)
 		{
-			this.errors.put("method",
+			errors.put("method",
 					"Ce type de requete n'est pas supportee, merci d'utiliser le formulaire prevu pour envoyer votre fichier.");
 			e.printStackTrace();
 		}
 		
-		if (this.errors.isEmpty())
+		if (errors.isEmpty())
 		{
 			for (Part part : parts)
 			{
@@ -111,24 +112,24 @@ public class ImageUploader
 						contenuFichier = part.getInputStream();
 					} catch (IOException e)
 					{
-						this.errors.put("readError", "Une erreur est survenue lors de la lecture de votre fichier.");
+						errors.put("readError", "Une erreur est survenue lors de la lecture de votre fichier.");
 						e.printStackTrace();
 					}
-					if (this.errors.isEmpty())
+					if (errors.isEmpty())
 					{
 						try
 						{
 							this.writeFile(contenuFichier, nomFichier);
 							Image img = new Image();
-							img.setTitre("Titre de l'image " + nomFichier);
-							img.setDescription("Description de l'image " + nomFichier);
+							img.setTitre(nomFichier);
+							img.setDescription(nomFichier);
 							img.setHauteur("600");
 							img.setLargeur("850");
 							img.setFichierImage(nomFichier);
 							images.add(img);
 						} catch (IOException e)
 						{
-							this.errors.put("writeError", "Erreur lors de l'ecriture du fichier.");
+							errors.put("writeError", "Erreur lors de l'ecriture du fichier.");
 							e.printStackTrace();
 						}
 					}
@@ -136,7 +137,7 @@ public class ImageUploader
 			}
 		}
 		
-		this.resultat = this.errors.isEmpty() ? "Upload effectue avec succes !" : "Echec de l'upload !";
+		resultat = errors.isEmpty() ? "Upload effectue avec succes !" : "Echec de l'upload !";
 		
 		return images;
 	}
@@ -147,10 +148,9 @@ public class ImageUploader
 		BufferedOutputStream sortie = null;
 		try
 		{
-			// System.out.println("DANS LE BLOC TRY DU WRITEFILE
-			// ----------------------------");
+			System.out.println("DANS LE BLOC TRY DU WRITEFILE ----------------------------"+UPLOAD_DIRECTORY);
 			entree = new BufferedInputStream(contenu, TAILLE_TAMPON);
-			sortie = new BufferedOutputStream(new FileOutputStream(new File(UPLOAD_DIRECTORY + "/" + nomFichier)),
+			sortie = new BufferedOutputStream(new FileOutputStream(new File(UPLOAD_DIRECTORY  + "/" + nomFichier)),
 					TAILLE_TAMPON);
 			byte[] tampon = new byte[TAILLE_TAMPON];
 			int longueur = 0;
@@ -182,6 +182,7 @@ public class ImageUploader
 	
 	public String getValeur(Part part) throws IOException
 	{
+		System.out.println(part);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(part.getInputStream(), "UTF-8"));
 		StringBuilder valeur = new StringBuilder();
 		char[] buffer = new char[1024];

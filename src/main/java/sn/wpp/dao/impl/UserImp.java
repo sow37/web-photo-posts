@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import sn.wpp.beans.Compte;
 import sn.wpp.beans.User;
 import sn.wpp.common.enumeration.Profil;
 import sn.wpp.dao.interf.UserInt;
@@ -31,6 +30,22 @@ public class UserImp implements UserInt{
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	public List<User> findUsersWithout(String email)
+	{
+		List<User> users = this.getAll();
+		
+		for (User user : users)
+		{
+			if (user.getEmail().equals(email))
+			{
+				users.remove(user);
+				break;
+			}
+		}
+		
+		return users;
 	}
 	
 	@SuppressWarnings("unchecked")

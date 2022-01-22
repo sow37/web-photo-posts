@@ -14,7 +14,7 @@ import sn.wpp.common.enumeration.Profil;
 import sn.wpp.dao.impl.UserImp;
 
 public class ConfirmUser {
-	private User utilisateur;
+	public User utilisateur;
 	
 	
 	private Map<String, String> erreurs;
@@ -25,6 +25,7 @@ public class ConfirmUser {
 		this.status = false;
 		this.request = request;
 		this.erreurs = new HashMap<String, String>();
+		
 	}
 	public boolean ajouter() {
 		
@@ -33,12 +34,14 @@ public class ConfirmUser {
 		String login = getParameter(FormFields.CHAMP_LOGIN);
 		String password = getParameter(FormFields.CHAMP_PASSWORD);
 		String email = getParameter(FormFields.CHAMP_EMAIL);
-		User utilisateur = new User(nom, prenom, email, Profil.simpleUser, new Compte(login, password));
+		this.utilisateur = new User(nom, prenom, email, Profil.simpleUser, new Compte(login, password));
 		statusMessage = "Echec d'ajout";
 		
 		validerChamps(FormFields.CHAMP_NOM, FormFields.CHAMP_PRENOM, FormFields.CHAMP_LOGIN, FormFields.CHAMP_PASSWORD, FormFields.CHAMP_PASSWORDBIS, FormFields.CHAMP_EMAIL);
 		validerPassword();
+		System.out.println(erreurs);
 		if(erreurs.isEmpty()) {
+			//System.out.println("dans");
 			UserImp userImp = new UserImp();
 			status = userImp.add(utilisateur);
 			if(status) {
@@ -52,9 +55,6 @@ public class ConfirmUser {
 	
 	public boolean update() {
 		    //boolean isUpdated = false;
-			
-			
-			
 			validerChamps(FormFields.CHAMP_NOM, FormFields.CHAMP_PRENOM, FormFields.CHAMP_LOGIN, FormFields.CHAMP_PASSWORD, FormFields.CHAMP_PASSWORDBIS, FormFields.CHAMP_EMAIL);
 			validerPassword();
 			

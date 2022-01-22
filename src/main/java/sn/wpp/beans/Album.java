@@ -30,7 +30,7 @@ public class Album extends CommonAttributs implements Serializable {
 	private Acces acces;
 	@OneToMany(mappedBy = "album", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE })
 	private List<Image> images;
-	@ManyToOne
+	@ManyToOne(cascade = { CascadeType.MERGE })
 	private User owner;
 	@ManyToMany(cascade = { CascadeType.MERGE })
 	private List<User> sharedWith;

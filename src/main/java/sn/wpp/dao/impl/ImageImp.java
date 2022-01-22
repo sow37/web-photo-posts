@@ -45,14 +45,35 @@ public class ImageImp implements ImageInt {
 	{
 		this.removeImageFile(uplodaDirectory, image);
 		System.out.println("Image ---------------- " + image.getTitre());
-		em.remove(image);
+		try {
+			em.getTransaction().begin();
+			em.remove(image);
+			em.getTransaction().commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void deleteById(Long id, HttpServletRequest request)
 	{
-		Image img = this.em.find(Image.class, id);
-		this.removeImageFile(request.getServletContext().getInitParameter("uploadDirectory"), img);
-		this.em.remove(img);
+		try
+		{
+			
+			Image img = em.find(Image.class, id);
+			//removeImageFile(request.getServletContext().getInitParameter("uploadDirectory"), img);
+			delete(img,request.getServletContext().getInitParameter("uploadDirectory"));
+			try {
+				em.remove(img);
+				System.out.println("deleted try");
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			System.out.println("deleted");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void update(Image image)

@@ -19,7 +19,7 @@
         </div>
         <div class="info">
             <div>
-                <h1>${ sessionScope.utilisateur.nom } ${ sessionScope.utilisateur.prenom }</h1>
+                <h1 style="font-size: 14px">${ sessionScope.utilisateur.nom } ${ sessionScope.utilisateur.prenom }</h1>
             </div>
             <div>
                 <h4>${ sessionScope.utilisateur.email }</h4>
@@ -27,9 +27,7 @@
             <div>
                 <h5>${ sessionScope.utilisateur.compte.login }</h5>
             </div>
-            <div>
-                <h5>${ sessionScope.utilisateur.albums }</h5>
-            </div>
+            
 
         </div>
     </div>
