@@ -7,7 +7,7 @@
         <link rel="stylesheet" href='<c:url value="/css/editAccount.css"/>'>
 
         <div class="container" style="margin-top : 50px;">
-            <div class="panel puff-in-center">
+            <div class="panel fade-in">
                 <div class="panel-title fade-in-top" style="text-align: center;">
                     Modifier vos parametres <br/> <i class="fas fa-save fade-in-top"></i> 
                 </div>

@@ -72,3 +72,23 @@
             align-items: center;
             border-radius: 17px;
         }
+        
+        
+        @media only screen and (max-width: 750px)
+        {
+        	.user-dropdown
+        	{
+        		max-width : 400px;
+        		font-size : 13px;
+        	}
+        	.user-body
+        	{
+        		grid-template-columns : 1fr;
+        		grid-template-rows : 1fr 1fr 1fr;
+        		
+        	}
+        	.show-body 
+        	{
+        	height : 200px;
+        	}
+        }
