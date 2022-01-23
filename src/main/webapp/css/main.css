@@ -318,7 +318,18 @@ nav
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 
+<<<<<<< HEAD
 
+=======
+}
+@media only screen and (max-width:660px)
+{
+	.mobile
+    {
+        display: none;
+    }
+}
+>>>>>>> 07cb917e36fc2b687c3ee938862706a73e59eafb
 @media only screen and (max-width: 600px) {
     .menu-show 
     {
@@ -338,7 +349,7 @@ nav
   {
       font-size: 20px;
       font-family: 'Courier New', Courier, monospace;
-      letter-spacing: 10px;
+      letter-spacing: 5px;
   }
   .message-container
 {
@@ -437,4 +448,18 @@ body
 .float-button-right-bottom:hover 
 {
 	transform : scale(1.5);
+}
+.container 
+{
+	min-height : 600px;
+}
+.logo > a 
+{
+	color : #252525 !important;
+	font-weight : bold;
+	text-decoration : none;
+}
+.logo >a:hover 
+{
+	text-decoration : none;
 }

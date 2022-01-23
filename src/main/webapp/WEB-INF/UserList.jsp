@@ -8,15 +8,22 @@
 
         <c:choose>
             <c:when test="${ empty requestScope.users }">
+<<<<<<< HEAD
                 <div class="message success" style="text-align : center; font-size : 40px; margin-top : 40px; font-weight : bold;">
                     <i class="far fa-lightbulb flicker-2" style="color : #ffb100;"></i>
+=======
+                <div class="container">
+                	<div class="message success" style="text-align : center; font-size : 40px; margin-top : 40px; font-weight : bold;">
+                    <i class="far fa-lightbulb flicker-2" style="color : #ffb100; font-size : 150pt;"></i>
+>>>>>>> 07cb917e36fc2b687c3ee938862706a73e59eafb
                     <br/>
                     Aucun utilisateur de ce type pour le moment
+                </div>
                 </div>
             </c:when>
             <c:otherwise>
 
-                <div class="container puff-in-center">
+                <div class="container fade-in">
 					<div>
 						<h1>Liste des utilisateurs</h1>
 					</div>

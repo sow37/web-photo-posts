@@ -107,3 +107,7 @@
         	grid-row-gap : 30px;
         	min-height : 500px;
         }
+        
+        .main-link:hover{
+        	text-decoration : none;
+        }
