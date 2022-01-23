@@ -26,7 +26,7 @@ Pour executer le projet, il faut tout d'abord:
 
  ## Lien video youtube explicative
 
-- https://youtu.be/yzlKguMLwHI
+- https://youtu.be/J9IZwTWCs9A
 
 ## Contributeurs
 
